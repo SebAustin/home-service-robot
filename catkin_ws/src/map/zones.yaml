@@ -1,0 +1,14 @@
+# Pickup Zone and Drop-off Zone, in the map frame (metres, radians).
+# The robot spawns at the world origin facing east, so the map frame equals the Gazebo world frame
+# and these can be read straight off home.world:
+#   west room x in [-4, 0], east room x in [0, 4], doorway at x = 0 with |y| < 0.9.
+# Loaded by the shell scripts with `rosparam load`; read by both pick_objects and add_markers.
+zones:
+  pickup:            # west room, 0.6 m in front of the bookshelf at (-2.5, 2.7), facing it
+    x: -2.5
+    y: 1.9
+    yaw: 1.5708
+  dropoff:           # east room, beside the cabinet at (3.5, -2.2), facing it
+    x: 2.6
+    y: -2.2
+    yaw: 0.0

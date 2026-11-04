@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Gazebo with the home world and my_robot spawned in it. Starts the ROS master if none is running.
+  RViz is not started here: each shell script chooses its own RViz configuration.
+-->
+<launch>
+
+  <!-- Start Pose: the middle doorway, facing east. At (0, 0, 0) gmapping's map frame equals the
+       Gazebo world frame, so the zones in map/zones.yaml can be read straight off the world file. -->
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+  <arg name="yaw" default="0"/>
+
+  <arg name="world_file" default="$(find my_robot)/../map/home.world"/>
+  <arg name="gui" default="true"/>
+
+  <include file="$(find my_robot)/launch/robot_description.launch"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="use_sim_time" value="true"/>
+    <arg name="debug" value="false"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="world_name" value="$(arg world_file)"/>
+  </include>
+
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -param robot_description -model my_robot
+              -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw)"/>
+
+</launch>

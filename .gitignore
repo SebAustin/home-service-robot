@@ -1,0 +1,9 @@
+catkin_ws/build/
+catkin_ws/devel/
+catkin_ws/install/
+catkin_ws/.catkin_workspace
+.remember/
+.DS_Store
+*.pyc
+__pycache__/
+*.zip

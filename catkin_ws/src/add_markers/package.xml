@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>add_markers</name>
+  <version>0.1.0</version>
+  <description>Draws the Virtual Object in RViz: on a fixed timer (timed mode) or following the robot's Delivery Phase (reactive mode).</description>
+  <maintainer email="henry.sebastien1982@gmail.com">Sebastien Henry</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>pick_objects</depend>
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>visualization_msgs</depend>
+
+  <test_depend>rosunit</test_depend>
+</package>

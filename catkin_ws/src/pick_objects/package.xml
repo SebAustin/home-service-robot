@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pick_objects</name>
+  <version>0.1.0</version>
+  <description>Drives one Delivery: sends the Pickup Zone and Drop-off Zone to move_base and announces each Delivery Phase on /delivery_status.</description>
+  <maintainer email="henry.sebastien1982@gmail.com">Sebastien Henry</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>actionlib</depend>
+  <depend>move_base_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+
+  <exec_depend>move_base</exec_depend>
+
+  <test_depend>rosunit</test_depend>
+</package>

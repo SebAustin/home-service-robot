@@ -1,0 +1,8 @@
+# Third-party sources committed into this workspace (.git removed).
+# repo                              branch         commit
+ros-perception/slam_gmapping        melodic-devel  eec86068ceb92ebc433b435fe482db14c562f268
+ros-teleop/teleop_twist_keyboard    (copied from the "Where Am I?" project; upstream noetic release)
+#
+# my_robot is the author's own robot from the "Where Am I?" project (not third-party).
+# Everything else (amcl, move_base, map_server, navfn, base_local_planner, openslam_gmapping, xterm)
+# comes from apt; see ../../setup.sh.
