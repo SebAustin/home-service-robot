@@ -55,6 +55,13 @@ catkin_ws/src/
 
 Installs `xterm`, the Noetic navigation stack and `openslam_gmapping`, then runs `catkin_make` and the unit tests.
 
+If `apt-get update` fails with `EXPKEYSIG F42ED6FBAB17C654`, the workspace's ROS signing key has expired (`setup.sh` detects this and stops). Refresh it, then rerun `./setup.sh`:
+
+```bash
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo 'deb [signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros/ubuntu focal main' | sudo tee /etc/apt/sources.list.d/ros-latest.list
+```
+
 ## Run
 
 Each script opens one xterm per node, 5 s apart.

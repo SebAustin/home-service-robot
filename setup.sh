@@ -5,7 +5,19 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 
-sudo apt-get update
+if ! sudo apt-get update 2>&1 | tee /dev/stderr | grep -q "EXPKEYSIG F42ED6FBAB17C654" ; then
+  :
+else
+  cat >&2 <<'MSG'
+
+The ROS apt signing key on this machine has expired. Refresh it, then run ./setup.sh again:
+
+  sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+  echo 'deb [signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros/ubuntu focal main' | sudo tee /etc/apt/sources.list.d/ros-latest.list
+
+MSG
+  exit 1
+fi
 sudo apt-get install -y \
   xterm \
   ros-noetic-navigation \
