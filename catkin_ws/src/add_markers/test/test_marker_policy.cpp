@@ -88,3 +88,9 @@ TEST(Mode, RejectsUnknownMode) {
   EXPECT_FALSE(add_markers::parseMode("odom", &mode));
   EXPECT_EQ(add_markers::Mode::Reactive, mode);
 }
+
+// catkin_add_gtest links gtest but not gtest_main, so each test binary provides its own main.
+int main(int argc, char** argv) {
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

@@ -32,7 +32,8 @@ source /opt/ros/noetic/setup.bash
 cd "$ROOT/catkin_ws"
 rosdep install --from-paths src --ignore-src -r -y || echo "rosdep reported missing keys (see above)"
 catkin_make
-catkin_make run_tests && catkin_test_results build/test_results
+catkin_make run_tests
+catkin_test_results build/test_results  # non-zero (and setup fails) if any test failed
 
 echo
 echo "Built. Next: catkin_ws/src/scripts/test_slam.sh"
