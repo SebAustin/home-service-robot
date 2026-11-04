@@ -80,3 +80,10 @@ All scripts live in `catkin_ws/src/scripts/`. Run `stop_all.sh` between scripts 
 ## Tests
 
 `catkin_make run_tests` runs 24 gtest cases on the logic with no ROS needed: zone validation, Delivery Phase names (the `/delivery_status` contract), the Delivery state machine (order, retries, invalid events), and the marker placement rules for both modes. The simulation itself is checked by hand with the table above.
+
+## Verified run (Udacity workspace, Ubuntu 20.04 + Noetic)
+
+- `setup.sh`: build OK, 78 tests, 0 failures (includes gmapping's own tests).
+- `test_slam.sh`: map built by gmapping while driving both rooms; saved as `map/home_map.{pgm,yaml}`.
+- `home_service.sh`: `HEADING_TO_PICKUP` → *Reached pickup zone* at 30.5 s (sim) and the Virtual Object hidden at the same instant → 5.0 s pickup → *Reached drop-off zone* at 55.7 s and the Virtual Object shown at the drop-off. Both legs on the first attempt.
+- `add_marker.sh`: shown at pickup → hidden 5 s later → shown at drop-off 5 s after that.
