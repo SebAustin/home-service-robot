@@ -5,9 +5,11 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 
-if ! sudo apt-get update 2>&1 | tee /dev/stderr | grep -q "EXPKEYSIG F42ED6FBAB17C654" ; then
-  :
-else
+update_log="$(mktemp)"
+if ! sudo apt-get update 2>&1 | tee "$update_log"; then
+  echo "apt-get update failed" >&2
+fi
+if grep -q "EXPKEYSIG F42ED6FBAB17C654" "$update_log"; then
   cat >&2 <<'MSG'
 
 The ROS apt signing key on this machine has expired. Refresh it, then run ./setup.sh again:
