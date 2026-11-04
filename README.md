@@ -75,7 +75,7 @@ Each script opens one xterm per node, 5 s apart.
 | `add_marker.sh` | + `add_markers` (timed) | Cube at pickup → disappears after 5 s → appears at drop-off 5 s later |
 | `home_service.sh` | + `add_markers` (reactive) + `pick_objects` | Cube at pickup; disappears when the robot arrives; robot waits 5 s, drives to drop-off; cube appears there |
 
-All scripts live in `catkin_ws/src/scripts/`. Every script except `test_slam.sh` needs the saved map.
+All scripts live in `catkin_ws/src/scripts/`. Run `stop_all.sh` between scripts to close the previous simulation. Every script except `test_slam.sh` needs the saved map.
 
 ## Tests
 
